@@ -16,7 +16,7 @@ SecureBook is a fully functional booking system built with security-first princi
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/secure-booking.git
+git clone https://github.com/Rushdrshd/Secure_Booking_Website
 cd secure-booking
 ```
 
