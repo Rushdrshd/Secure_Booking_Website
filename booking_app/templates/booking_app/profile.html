@@ -1,0 +1,26 @@
+{% extends 'booking_app/base.html' %}
+{% block title %}Profile — SecureBook{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-md-7">
+<div class="card p-4">
+    <h3>👤 My Profile</h3>
+    <p class="text-muted">Role: <strong>{{ profile.role|capfirst }}</strong></p>
+    <hr>
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="mb-3">
+            <label class="form-label fw-semibold">{{ field.label }}</label>
+            {{ field }}
+            {% for error in field.errors %}
+            <div class="text-danger small">⚠ {{ error }}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'booking_app/base.html' %}
+{% block title %}500 Server Error{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-1">500</h1>
+    <h3>Internal Server Error</h3>
+    <p class="text-muted">Something went wrong on our end. Please try again later.</p>
+    <!-- No stack trace or system info shown to user (OWASP ASVS V7) -->
+    <a href="{% url 'dashboard' %}" class="btn btn-primary">Go Home</a>
+</div>
+{% endblock %}

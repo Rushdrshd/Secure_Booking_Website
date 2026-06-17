@@ -1,0 +1,43 @@
+{% extends 'booking_app/base.html' %}
+{% block title %}Booking Detail — SecureBook{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-md-7">
+<div class="card p-4">
+    <h3>📋 Booking Details</h3>
+    <hr>
+    <dl class="row">
+        <dt class="col-sm-4">Reference</dt>
+        <dd class="col-sm-8"><code>{{ booking.reference }}</code></dd>
+        <dt class="col-sm-4">Service</dt>
+        <dd class="col-sm-8">{{ booking.service.name }}</dd>
+        <dt class="col-sm-4">Date</dt>
+        <dd class="col-sm-8">{{ booking.booking_date }}</dd>
+        <dt class="col-sm-4">Time</dt>
+        <dd class="col-sm-8">{{ booking.booking_time }}</dd>
+        <dt class="col-sm-4">Status</dt>
+        <dd class="col-sm-8 status-{{ booking.status }}">{{ booking.get_status_display }}</dd>
+        <dt class="col-sm-4">Notes</dt>
+        <dd class="col-sm-8">{{ booking.notes|default:"—" }}</dd>
+        {% if booking.attachment %}
+        <dt class="col-sm-4">Attachment</dt>
+        <dd class="col-sm-8">
+            <a href="{% url 'download_attachment' booking.reference %}">Download File</a>
+        </dd>
+        {% endif %}
+    </dl>
+    <div class="d-flex gap-2 mt-3">
+        {% if booking.status != 'cancelled' and booking.user == request.user %}
+        <a href="{% url 'booking_edit' booking.reference %}" class="btn btn-outline-primary">Edit</a>
+        <form method="post" action="{% url 'booking_cancel' booking.reference %}"
+              onsubmit="return confirm('Cancel this booking?')">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger">Cancel Booking</button>
+        </form>
+        {% endif %}
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}
