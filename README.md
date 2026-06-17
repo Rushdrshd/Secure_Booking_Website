@@ -1,4 +1,4 @@
-# 🔒 SecureBook — Secure Booking System
+# 🔒 SecureBook — Secure Booking Website System
 
 **Course:** IKB 21503 — Secure Software Development | UniKL MIIT  
 **Framework:** Django 4.2 (Python)  
@@ -17,7 +17,7 @@ SecureBook is a fully functional booking system built with security-first princi
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/Rushdrshd/Secure_Booking_Website
-cd secure-booking
+cd Secure_Booking_Website
 ```
 
 ### 2. Create virtual environment
@@ -141,7 +141,6 @@ secure-booking/
 │   ├── urls.py
 │   └── templates/
 │       └── booking_app/     # All HTML templates
-├── media/uploads/           # File uploads (outside web root)
 ├── logs/                    # Security logs
 ├── requirements.txt
 ├── .env.example             # Environment template (no secrets)
